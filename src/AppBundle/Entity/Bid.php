@@ -32,6 +32,10 @@ class Bid
      * @ORM\ManyToOne(targetEntity="User", inversedBy="bids", cascade={"persist"})
      */
     private $bidder;
+    /**
+     * @ORM\ManyToOne(targetEntity="Auction", inversedBy="bids", cascade={"persist"})
+     */
+    private $auction;
 
 
     /**
@@ -90,5 +94,29 @@ class Bid
     public function getBidder()
     {
         return $this->bidder;
+    }
+
+    /**
+     * Set auction
+     *
+     * @param \AppBundle\Entity\Auction $auction
+     *
+     * @return Bid
+     */
+    public function setAuction(\AppBundle\Entity\Auction $auction = null)
+    {
+        $this->auction = $auction;
+
+        return $this;
+    }
+
+    /**
+     * Get auction
+     *
+     * @return \AppBundle\Entity\Auction
+     */
+    public function getAuction()
+    {
+        return $this->auction;
     }
 }

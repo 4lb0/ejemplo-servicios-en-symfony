@@ -39,6 +39,9 @@ class LoadSampleData implements FixtureInterface
 
         $bid2 = new Bid();
         $bid2->setPrice(5100)->setBidder($chris);
+
+        $mac->addBid($bid1)
+            ->addBid($bid2);
         $manager->persist($bid2);
 
         $cuna = new Auction();

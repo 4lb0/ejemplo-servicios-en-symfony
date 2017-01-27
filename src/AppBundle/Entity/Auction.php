@@ -53,6 +53,10 @@ class Auction
      * @ORM\ManyToOne(targetEntity="User", inversedBy="auctions",cascade={"persist"})
      */
     private $seller;
+    /**
+     * @ORM\OneToMany(targetEntity="Bid", mappedBy="auction")
+     */
+    private $bids;
 
 
     /**
@@ -183,5 +187,47 @@ class Auction
     public function getSeller()
     {
         return $this->seller;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->bids = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add bid
+     *
+     * @param \AppBundle\Entity\Bid $bid
+     *
+     * @return Auction
+     */
+    public function addBid(\AppBundle\Entity\Bid $bid)
+    {
+        $bid->setAuction($this);
+        $this->bids[] = $bid;
+
+        return $this;
+    }
+
+    /**
+     * Remove bid
+     *
+     * @param \AppBundle\Entity\Bid $bid
+     */
+    public function removeBid(\AppBundle\Entity\Bid $bid)
+    {
+        $this->bids->removeElement($bid);
+    }
+
+    /**
+     * Get bids
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBids()
+    {
+        return $this->bids;
     }
 }
