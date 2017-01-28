@@ -1,4 +1,13 @@
 {% extends 'base.html.twig' %}
+
+{% block header %}
+<div class="jumbotron">
+    <h1><a href="{{ path('homepage') }}">Auctions!</a></h1>
+    <p>Este es un ejemplo para ver los Services y el Service Container de Symfony.</p>
+    <p><a class="btn btn-primary" href="http://symfony.com/doc/current/service_container.html">Leer más</a></p>
+</div>
+{% endblock %}
+
 {% block content %}
 
 <h2>Lorem ipsum dolor sit amet</h2>

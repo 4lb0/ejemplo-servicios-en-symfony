@@ -8,18 +8,18 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">        
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
             <style>
-                body{ margin-top: 50px; }
+                body, .footer{ margin-top: 50px; }
             </style>
         {% endblock %}
     </head>
     <body>
         <div class="container">
+        {% block header %}
+        <div class="row">
+            <h1><a href="{{ path('homepage') }}">Auctions!</a></h1>
+        </div>
+        {% endblock %}
         {% block body %}
-            <div class="jumbotron">
-                <h1>Auction!</h1>
-                <p>Este es un ejemplo para ver los Services y el Service Container de Symfony.</p>
-                <p><a class="btn btn-primary" href="http://symfony.com/doc/current/service_container.html">Leer más</a></p>
-            </div>
             <div class="row">
                 <div class="col-md-7 text-justify">
                 {% block content %}{% endblock %}
@@ -28,8 +28,14 @@
                     <h3>Últimas subastas</h3>
                     {{ render(controller('AppBundle:Default:auctions')) }}
                 </div>
-        </div>
+            </div>
         {% endblock %}
+            <div class="row footer">
+                <p class="text-center text-muted">
+                    Programado por <a href="http://github.com/4lb0/">albo</a> @ <a href="http://pragmore.com">Pragmore</a>
+                    | Licencia <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons 4.0</a>
+                </p>
+            </div>
         </div>
         {% block javascripts %}
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
