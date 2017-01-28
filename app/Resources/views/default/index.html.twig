@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+{{ parent() }}
+<style>body{ margin-top: 50px }</style>
+{% endblock %}
+
 {% block header %}
 <div class="jumbotron">
     <h1><a href="{{ path('homepage') }}">Auctions!</a></h1>
